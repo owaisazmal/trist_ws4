@@ -1,0 +1,37 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/opt/ros/noetic/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/devel/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/src/navigation/amcl/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/src/navigation/base_local_planner/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/src/navigation/carrot_planner/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/src/navigation/clear_costmap_recovery/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/src/navigation/costmap_2d/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/src/navigation/dwa_local_planner/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/src/navigation/global_planner/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/src/navigation/map_server/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/src/navigation/move_base/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/src/navigation/move_slow_and_clear/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/src/navigation/nav_core/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/src/navigation/navfn/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/src/realsense_gazebo_plugin-melodic-devel/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/src/navigation/rotate_recovery/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/src/vision_pkg/include/**",
+        "/home/dulanjana/fiverr_projects/2024igv_ws/src/navigation/voxel_grid/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

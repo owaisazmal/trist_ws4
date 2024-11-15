@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="your_robot">
+
+  <!-- Robot base link -->
+  <link name="base_link"/>
+
+  <!-- LiDAR frame -->
+  <link name="laser_frame"/>
+
+  <!-- Joint connecting LiDAR to robot base -->
+  <joint name="base_to_laser_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="laser_frame"/>
+    <origin xyz="0.1 0.0 0.5" rpy="0 0 0"/>
+  </joint>
+
+</robot>
+

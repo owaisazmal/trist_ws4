@@ -1,0 +1,12 @@
+<launch>
+    <!-- Start rosserial node -->
+    <node name="rosserial_node" pkg="rosserial_python" type="serial_node.py" output="screen">
+        <param name="port" value="/dev/ttyACM1"/>  <!-- Change this to match your Arduino port -->
+        <param name="baud" value="57600"/>         <!-- Change this to match your Arduino baud rate -->
+    </node>
+
+    <!-- Start your light controller node -->
+    <node pkg="igv" type="light.py" name="light_controller_node" output="screen">
+    </node>
+</launch>
+

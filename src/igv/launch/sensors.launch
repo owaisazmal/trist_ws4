@@ -1,0 +1,21 @@
+<launch>
+
+    <!-- start joystick, ACM0 (arduino mega) -->
+    <include file="$(find igv)/launch/joystick_controller.launch"/>
+    
+    <!-- start light, ACM1 (arduino uno) -->
+    <!-- <include file="$(find igv)/launch/light.launch"/> -->
+    
+    <!-- start Lidar, ACM3 -->
+    <include file="$(find lidar_pkg)/launch/lidar.launch"/>
+    
+    <!-- start GPS, ACM2 (BOTH LAUNCH FILE AND PYTHON CODE NEED TO BE ADJUSTED -->
+    <!-- <include file="$(find gps_pkg)/launch/gps_node.launch"/> -->
+    
+    <!-- start Camera -->
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch"/>
+    
+    <!-- start imu -->
+    <!-- <include file="$(find vectornav)/launch/vectornav.launch"/> -->
+
+</launch>

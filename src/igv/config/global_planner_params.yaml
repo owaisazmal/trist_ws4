@@ -1,0 +1,6 @@
+base_global_planner: global_planner/GlobalPlanner
+GlobalPlanner:
+  visualize_potential: true
+  lethal_cost: 253
+  neutral_cost: 75
+  cost_factor: 0.55

@@ -1,0 +1,97 @@
+<launch>
+
+  <!-- robot description and spawn urdf -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find igv)/urdf/igv.urdf" />
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model igv_robot -param robot_description -x 0 -y 10 -z 0.2047" />
+
+  <!-- gazebo launching -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find igv)/worlds/hospital.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="false"/>
+    <arg name="gui" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <!-- robot and joint state publishers -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+    <param name="use_tf_static" value="true"/>
+  </node>
+
+  <!-- separate camera link for depth camera -->
+  <node name="static_publisher_camera_optical" pkg="tf" type="static_transform_publisher" args="0 0 0 -1.5708 0 -1.5708 camera_link camera_link_optical 100" />
+
+  <!-- converting camera point cloud into a laserscan -->
+  <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+      <remap from="cloud_in" to="/mobile_robot/depth/points"/>
+      <remap from="scan" to="/camera_scan" />
+      <rosparam>
+        target_frame: lidar_link
+        transform_tolerance: 0.01
+        min_height: -1
+        max_height: 1.0
+        
+        angle_min: -1.5708
+        angle_max: 1.5708
+        angle_increment: 0.0087
+        scan_time: 0.3333
+        range_min: 0.2
+        range_max: 3.0
+        use_inf: true
+        
+        #concurrency_level affects number of pc queued for processing and the number of threadsused
+        # 0: Detect number of cores
+        # 1: Single threaded
+        # 2: inf : Parallelism level
+        concurrency_level: 1
+      </rosparam>
+    </node>
+
+  <!-- fusion of lidar and camera laserscans -->
+  <node pkg="ira_laser_tools" name="laserscan_multi_merger" type="laserscan_multi_merger" output="screen">
+    <param name="destination_frame" value="base_link"/>
+    <param name="cloud_destination_topic" value="/merged_cloud"/>
+    <param name="scan_destination_topic" value="/merged_scan"/>
+    <param name="laserscan_topics" value ="/lidar_scan /camera_scan" />
+    <param name="angle_min" value="-3.14159"/>
+    <param name="angle_max" value="3.14159"/>
+    <param name="angle_increment" value="0.0058"/>
+    <param name="scan_time" value="0.0333333"/>
+    <param name="range_min" value="0.10"/>
+    <param name="range_max" value="30.0"/>
+  </node>
+
+  <!-- fusion of odometry and IMU -->
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization_local">
+    <param name="frequency" value="50.0" />
+    <param name="sensor_timeout" value="0.1" />
+    <param name="transform_time_offset" value="0.1" />
+    <param name="two_d_mode" value="true" />
+    <param name="publish_tf" value="true" />
+    <param name="map_frame" value="map" />
+    <param name="odom_frame" value="odom" />
+    <param name="base_link_frame" value="base_link" />
+    <param name="world_frame" value="odom" />
+
+    <param name="imu0" value="imu"/>
+    <param name="odom0" value="odom"/>
+    <param name="odom0_differential" value="true"/>
+    <param name="imu0_differential" value="true"/>
+
+    <rosparam param="odom0_config">[true,  true,  false,
+                                  false, false, false,
+                                  true,  false, false,
+                                  false, false, true,
+                                  false, false, false]</rosparam>
+    <rosparam param="imu0_config">[false, false, false, 
+                                   false, false, true,
+                                   false, false, false, 
+                                   false, false, true,
+                                   true, false, false]</rosparam>
+
+    <remap from="/odometry/filtered" to="/odometry/filtered"/>    
+
+  </node>
+
+</launch>

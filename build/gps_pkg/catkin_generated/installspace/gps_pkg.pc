@@ -1,0 +1,8 @@
+prefix=/home/igv/trist_ws4/install
+
+Name: gps_pkg
+Description: Description of gps_pkg
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

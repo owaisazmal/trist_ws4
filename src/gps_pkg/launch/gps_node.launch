@@ -1,0 +1,13 @@
+<launch>
+  <!-- Set the serial port parameter -->
+  <arg name="serial_port" default="/dev/ttyACM3"/>
+
+  <!-- Launch the gps_node.py script -->
+  <node pkg="gps_pkg" type="gps_node.py" name="gps_node" output="screen">
+
+    <param name="serial_port" value="$(arg serial_port)"/>
+  </node>
+<node name="gps_gui" pkg="gps_pkg" type="gps_gui.py" output="screen"/>
+
+</launch>
+

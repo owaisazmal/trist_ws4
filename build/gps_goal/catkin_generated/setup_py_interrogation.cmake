@@ -1,0 +1,7 @@
+set(gps_goal_SETUP_PY_SETUP_MODULE "distutils.core")
+set(gps_goal_SETUP_PY_VERSION "0.1.0")
+set(gps_goal_SETUP_PY_SCRIPTS "")
+set(gps_goal_SETUP_PY_PACKAGES "gps_goal")
+set(gps_goal_SETUP_PY_PACKAGE_DIRS "src/gps_goal")
+set(gps_goal_SETUP_PY_MODULES "")
+set(gps_goal_SETUP_PY_MODULE_DIRS "")

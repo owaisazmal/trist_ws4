@@ -1,0 +1,2 @@
+gps_goal:gps_pkg:igv:lidar_pkg:realsense-ros/realsense2_camera:realsense-ros/realsense2_description:vectornav
+-DCATKIN_DEVEL_PREFIX=/home/igv/trist_ws4/devel -DCMAKE_INSTALL_PREFIX=/home/igv/trist_ws4/install -G Unix Makefiles

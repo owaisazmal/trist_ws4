@@ -1,0 +1,8 @@
+prefix=/home/igv/trist_ws4/devel
+
+Name: vectornav
+Description: Description of vectornav
+Version: 2.0.0
+Cflags: -I/home/igv/trist_ws4/devel/include
+Libs: -L${prefix}/lib 
+Requires: roscpp sensor_msgs

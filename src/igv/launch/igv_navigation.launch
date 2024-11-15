@@ -1,0 +1,26 @@
+<launch>
+
+    <!-- robot details -->
+    <include file="$(find igv)/launch/igv_robot.launch"/>
+
+    <!-- map details -->
+    <!-- <arg name="map_file" default="$(find igv)/maps/back_jacaranda.yaml"/> -->
+    <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/> -->
+
+    <!-- move_base -->
+    <include file="$(find igv)/launch/move_base.launch"/>
+
+    <!-- rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find igv)/rviz/igv_navigation.rviz" />
+
+    <!-- launching localization method -->
+    <!-- amcl -->
+    <include file="$(find igv)/launch/amcl.launch"/> 
+    
+    <!-- robot localization with gps -->
+    <!-- <include file="$(find igv)/launch/gps_localization.launch"/> -->
+
+    <include file="$(find igv)/launch/igv_slam.launch"/> 
+
+
+</launch>

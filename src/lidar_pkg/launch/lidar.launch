@@ -1,0 +1,20 @@
+<launch>
+    <!-- Start the Hokuyo UTM-30LX driver -->
+    <node pkg="urg_node" type="urg_node" name="hokuyo_node" output="screen">
+        <param name="frame_id" value="lidar_link"/>
+        <param name="serial_port" value="/dev/ttyACM1"/> <!-- Update this with the correct device path -->
+        <param name="serial_baud" value="115200"/>
+        <remap from="scan" to="/lidar_scan"/> <!-- Remap the topic to /lidar_scan -->
+        <!-- Add parameters for the lidar configuration -->
+        <param name="cluster" value="1"/> <!-- Number of beams -->
+        <param name="angle_min" value="-1.570796"/> <!-- Minimum angle -->
+        <param name="angle_max" value="1.570796"/> <!-- Maximum angle -->
+        <param name="skip" value="0"/> <!-- Not skipping any beams -->
+        <param name="time_offset" value="0.0"/> <!-- Time offset -->
+        <!-- Add more parameters as needed -->
+    </node>
+
+    <!-- Run RViz to visualize the laser scan -->
+    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find lidar_pkg)/rviz/lidar.rviz" respawn="false" output="screen"/> -->
+</launch>
+

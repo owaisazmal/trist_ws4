@@ -1,0 +1,12 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/dulanjana/fiverr_projects/2024igv_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages",
+        "/home/dulanjana/Diyazen_Project/charging_dock/src/roboclaw_python_library"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/dulanjana/fiverr_projects/2024igv_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages",
+        "/home/dulanjana/Diyazen_Project/charging_dock/src/roboclaw_python_library"
+    ]
+}

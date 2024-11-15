@@ -1,0 +1,7 @@
+
+<launch>
+    <node pkg="hokuyo3d" type="hokuyo3d_node" name="hokuyo3d_node" output="screen">
+        <!-- Add any required parameters here -->
+    </node>
+</launch>
+

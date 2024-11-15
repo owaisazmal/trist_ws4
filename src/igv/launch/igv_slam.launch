@@ -1,0 +1,21 @@
+<launch>
+
+    <!-- robot details -->
+    <!-- <include file="$(find igv)/launch/igv_robot.launch"/> -->
+
+     <!-- gmapping slam node -->
+    <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">
+    <param name="odom_frame" value="odom" />
+    <param name="base_frame" value="base_link" />
+    <param name="occ_thresh" value="0.1"/>
+    <param name="map_update_interval" value="1.0"/>
+    <param name="delta" value="0.05"/>
+    <param name="map_size" value="4096"/> <!-- Adjust map size as needed -->
+    <remap from="scan" to="lidar_scan"/>
+</node>
+
+
+    <!-- rviz -->
+    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find igv)/rviz/igv_slam.rviz" /> -->
+
+</launch>

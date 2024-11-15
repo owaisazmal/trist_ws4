@@ -1,0 +1,8 @@
+prefix=/home/igv/trist_ws4/install
+
+Name: igv
+Description: Description of igv
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

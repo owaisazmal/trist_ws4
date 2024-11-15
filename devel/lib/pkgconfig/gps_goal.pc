@@ -1,0 +1,8 @@
+prefix=/home/igv/trist_ws4/devel
+
+Name: gps_goal
+Description: Description of gps_goal
+Version: 0.1.0
+Cflags: 
+Libs: -L${prefix}/lib -lgps_goal
+Requires: rospy tf actionlib actionlib_msgs sensor_msgs geometry_msgs move_base_msgs
